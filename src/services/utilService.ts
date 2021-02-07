@@ -1,4 +1,4 @@
-type IssuesType = Array<{
+export type IssuesType = Array<{
   body: string
   createdAt: string
   title: string

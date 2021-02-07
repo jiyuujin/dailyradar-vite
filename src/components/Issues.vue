@@ -27,6 +27,7 @@ import { computed } from 'vue'
 import { useQuery, useResult } from '@vue/apollo-composable'
 import { searchQuery } from '../graphql/issue'
 import { getLabels, getCounts, sortCounts } from '../services/utilService'
+import { IssuesType } from '../services/utilService'
 
 export default {
   setup() {
@@ -37,7 +38,7 @@ export default {
       (data) => data.viewer.repository?.issues?.nodes
     )
     const counts = computed(() => {
-      const labels = getLabels(issues.value)
+      const labels = getLabels(issues.value as IssuesType)
       return sortCounts(getCounts(labels))
     })
     return { loading, error, counts }
